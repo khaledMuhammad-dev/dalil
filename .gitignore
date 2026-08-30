@@ -1,0 +1,10 @@
+# Root workspace only — dalil-api/ and dalil-web/ are separate git repos
+# with their own .gitignore files.
+node_modules/
+.DS_Store
+*.log
+.pnpm-store/
+
+# The two apps are separate repos, cloned in alongside this one
+dalil-api/
+dalil-web/

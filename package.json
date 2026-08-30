@@ -1,0 +1,36 @@
+{
+  "name": "dalil",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dalil monorepo — dalil-api (NestJS) + dalil-web (Next.js).",
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta --kill-others-on-fail \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "pnpm --dir dalil-api start:dev",
+    "dev:web": "pnpm --dir dalil-web dev",
+    "build": "pnpm build:api && pnpm build:web",
+    "build:api": "pnpm --dir dalil-api build",
+    "build:web": "pnpm --dir dalil-web build",
+    "start": "concurrently -n api,web -c cyan,magenta \"pnpm --dir dalil-api start\" \"pnpm --dir dalil-web start\"",
+    "test": "pnpm test:api && pnpm test:web",
+    "test:api": "pnpm --dir dalil-api test",
+    "test:web": "pnpm --dir dalil-web test",
+    "test:e2e": "pnpm --dir dalil-web test:e2e",
+    "lint": "pnpm lint:api && pnpm lint:web",
+    "lint:api": "pnpm --dir dalil-api lint",
+    "lint:web": "pnpm --dir dalil-web lint",
+    "typecheck": "pnpm typecheck:api && pnpm typecheck:web",
+    "typecheck:api": "pnpm --dir dalil-api typecheck",
+    "typecheck:web": "pnpm --dir dalil-web typecheck",
+    "storybook": "pnpm --dir dalil-web storybook",
+    "api:types": "pnpm --dir dalil-web api:types",
+    "install:all": "pnpm --dir dalil-api install && pnpm --dir dalil-web install",
+    "clean": "rm -rf dalil-api/dist dalil-web/.next"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
